@@ -5,6 +5,7 @@
         <group>
             <file>file:/home/blade/NetBeansProjects/Robot%20Camera/src/robot/camera/RobotCamera.java</file>
             <file>file:/home/blade/NetBeansProjects/Robot%20Camera/src/robot/camera/ArduinoCommunication.java</file>
+            <file>file:/home/blade/NetBeansProjects/Robot%20Camera/src/robot/camera/Interface.java</file>
         </group>
     </open-files>
 </project-private>

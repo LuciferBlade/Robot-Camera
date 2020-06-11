@@ -15,10 +15,10 @@ int pos2 = 90;
 
 void setup() { // setting up  initial positions of servos
   servHor.attach(servoHor);
-  moveTo(servHor, pos1, pos1, 5);
+  pos1 = moveTo(servHor, pos1, pos1, 5);
 
   servVer.attach(servoVer);
-  moveTo(servVer, pos2, pos1, 5);
+  pos2 = moveTo(servVer, pos2, pos2, 5);
 
   // starting serial
   Serial.begin(9600);
@@ -90,7 +90,7 @@ void loop() {
         //if number is within servo bounds
         if (temp >= 0 && temp <= 180) {
           //move servo
-          moveTo(servHor, pos1, temp, 5);
+          pos1 = moveTo(servHor, pos1, temp, 5);
 
           //create int to control Vertical servo
           temp = secondPart.toInt();
@@ -98,7 +98,7 @@ void loop() {
           //if number is within servo bounds
           if (temp >= 0 && temp <= 180) {
             //move servo
-            moveTo(servVer, pos2, temp, 5);
+            pos2 = moveTo(servVer, pos2, temp, 5);
 
           } else { //if Vertical servo number was out of bounds
             testing = "Number not right! (" + firstPart + " " + secondPart + ")";
@@ -110,7 +110,7 @@ void loop() {
 
       } //if there was message but it was an error or there were more than 2 parts of the message (2 control numbers) - ERROR
       else if (message != "") {
-        testing = "ERROR!";
+        testing = "ERROR! I" + message + "I";
       }
     }
   }
@@ -122,20 +122,20 @@ void loop() {
 }
 
 //method to control servo movement with specified speed
-void moveTo (Servo servo, int position, int destination, int speed) {
+int moveTo (Servo servo, int position, int destination, int speed) {
   int pos;
   int mapSpeed = map(speed, 0, 30, 30, 0);
   if (position < destination) {
     for (pos = position; pos <= destination; pos += 1) {
       servo.write(pos);
-      pos1 = pos;
       delay(mapSpeed);
     }
+    return destination;
   } else {
     for (pos = position; pos >= destination; pos -= 1) {
       servo.write(pos);
-      pos2 = pos;
       delay(mapSpeed);
     }
+    return destination;
   }
 }
