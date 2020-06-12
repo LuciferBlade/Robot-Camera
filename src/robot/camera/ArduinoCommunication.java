@@ -4,13 +4,16 @@
  * Project assignment for robot's pbject recognition system
  *
  * This class is used to directly control arduino controller over usb port
-
+ *
  */
 package robot.camera;
 
 import com.fazecast.jSerialComm.*;
 import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -24,9 +27,12 @@ public class ArduinoCommunication {
     private Scanner input;
     private PrintWriter output;
 
+    private boolean check = false;
+    private JTextArea textArea;
+
     private boolean initiated = false;
 
-    String receivedMsg;
+    private String receivedMsg;
 
     public ArduinoCommunication() {
         //empty constructor if port undecided
@@ -67,8 +73,11 @@ public class ArduinoCommunication {
             public void serialEvent(SerialPortEvent arg0) {
                 while (sPort.bytesAvailable() > 0) {
                     receivedMsg = input.nextLine();
-
-                    System.out.print(receivedMsg);
+                    if (check == false) {
+                        System.out.print(receivedMsg);
+                    } else {
+                        textArea.append(receivedMsg+"\n");
+                    }
                 }
             }
         });
@@ -96,6 +105,14 @@ public class ArduinoCommunication {
         sPort = SerialPort.getCommPort(this.usbPort);
     }
 
+    public void setCheck() {
+        check = true;
+    }
+
+    public void setTextArea(JTextArea area) {
+        textArea = area;
+    }
+
     //set new baud rate
     public void setBaudRate(int baudRate) {
         if (initiated == true) {
@@ -120,9 +137,18 @@ public class ArduinoCommunication {
         return baudRate;
     }
 
+    //get last message from stream
+    public String getMessage() {
+        return receivedMsg;
+    }
+
+    //get status if connection is present
+    public boolean getStatus() {
+        return initiated;
+    }
+
     //writes string onto stream
     public void serialWrite(String msg) {
-
         if (!msg.isBlank() && !msg.isEmpty()) {
             byte temp[] = msg.getBytes();
             sPort.writeBytes(temp, temp.length);

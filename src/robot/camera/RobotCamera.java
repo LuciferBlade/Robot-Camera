@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package robot.camera;
 
 import java.io.BufferedReader;
@@ -21,14 +16,14 @@ public class RobotCamera {
      * @throws java.lang.InterruptedException
      */
     public static void main(String[] args) throws IOException, InterruptedException {
-        String usbPort = "/dev/ttyUSB0";
+        /*String usbPort = "/dev/ttyUSB0";
         int baudRate = 9600;
 
         ArduinoCommunication rt = new ArduinoCommunication(usbPort, baudRate);
-        
+
         rt.startConnection();
         rt.serialWrite("Hello Arduino!");
-        
+
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String temp = "";
 
@@ -37,6 +32,12 @@ public class RobotCamera {
             if (!temp.equals("exit")) {
                 rt.serialWrite(temp);
             }
-        }
+            else {
+                break;
+            }
+        }*/
+        
+        String temp = "-12";
+        System.out.print(temp.matches("^-?\\d{1,2}$"));
     }
 }
