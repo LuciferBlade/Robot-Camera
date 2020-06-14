@@ -4,8 +4,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import org.opencv.core.Core;
+import org.opencv.core.Mat;
+import org.opencv.core.MatOfByte;
+import org.opencv.core.Size;
+import org.opencv.highgui.HighGui;
+import org.opencv.imgproc.Imgproc;
+import org.opencv.videoio.VideoCapture;
 
 /**
  *
@@ -17,9 +30,13 @@ public class Interface extends javax.swing.JFrame {
     private int valueVer = 90;
     
     ArduinoCommunication arduCom;
-    String usbPort = "/dev/ttyUSB0";
+    String arduinoPort = "/dev/ttyUSB0";
     int baudRate = 9600;
 
+    String webcamPort = "/dev/video1";
+    
+    private VideoCapture webcam;
+    
     /**
      * Creates new form Interface
      * @throws java.lang.InterruptedException
@@ -32,8 +49,6 @@ public class Interface extends javax.swing.JFrame {
         downValueField.setText(String.valueOf(90 - valueVer));
         leftValueField.setText(String.valueOf(90 - valueHor));
         rightValueField.setText(String.valueOf(valueHor - 90));
-        
-        //upValueField
         
         upValueField.addFocusListener(new FocusListener(){
             @Override
@@ -127,7 +142,29 @@ public class Interface extends javax.swing.JFrame {
             
         });
         
-        arduCom = new ArduinoCommunication(usbPort, baudRate);
+        MatOfByte frame = new MatOfByte();
+        webcam = new VideoCapture();
+        webcam.open(webcamPort);
+        Thread.sleep(500);
+        if (webcam.isOpened()){
+            Runnable capture = new Runnable(){
+                @Override
+                public void run() {
+                    webcam.read(frame);
+                    Imgproc.resize(frame, frame, new Size(640, 480));
+                    BufferedImage buffImg = (BufferedImage) HighGui.toBufferedImage(frame);
+                                        
+                    camPanel.add(new JLabel(new ImageIcon(buffImg)));
+                    camPanel.repaint();
+                }
+            
+            };
+            capture.run();
+        }
+        
+                
+        
+        arduCom = new ArduinoCommunication(arduinoPort, baudRate);
         arduCom.setTextArea(messageReceiver);
         arduCom.setCheck();
         arduCom.startConnection();
@@ -271,8 +308,14 @@ public class Interface extends javax.swing.JFrame {
         msgEntryPanel = new javax.swing.JPanel();
         message = new javax.swing.JTextField();
         buttonSend = new javax.swing.JButton();
+        camPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         java.awt.GridBagLayout jPanel1Layout = new java.awt.GridBagLayout();
         jPanel1Layout.columnWidths = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0};
@@ -424,7 +467,7 @@ public class Interface extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         msgEntryPanel.add(message, gridBagConstraints);
 
-        buttonSend.setText("jButton1");
+        buttonSend.setText("Send message");
         buttonSend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSendActionPerformed(evt);
@@ -441,7 +484,9 @@ public class Interface extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(camPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(msgEntryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -450,9 +495,13 @@ public class Interface extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(220, Short.MAX_VALUE)
-                .addComponent(msgEntryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 214, Short.MAX_VALUE)
+                        .addComponent(msgEntryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(camPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jScrollPane1)
@@ -523,10 +572,17 @@ public class Interface extends javax.swing.JFrame {
         arduCom.serialWrite(message.getText());
     }//GEN-LAST:event_buttonSendActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        webcam.release();
+    }//GEN-LAST:event_formWindowClosing
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -564,6 +620,7 @@ public class Interface extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonSend;
+    private javax.swing.JPanel camPanel;
     private javax.swing.JButton centerButton;
     private javax.swing.JButton downButton;
     private javax.swing.JButton downDoubleButton;

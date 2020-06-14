@@ -1,8 +1,9 @@
 package robot.camera;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import org.opencv.core.Core;
+import org.opencv.core.CvType;
+import org.opencv.core.Mat;
 
 /**
  *
@@ -16,6 +17,11 @@ public class RobotCamera {
      * @throws java.lang.InterruptedException
      */
     public static void main(String[] args) throws IOException, InterruptedException {
+        
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        Mat mat = Mat.eye(3,3, CvType.CV_8UC1);
+        System.out.println("mat = " + mat.dump());
+        
         /*String usbPort = "/dev/ttyUSB0";
         int baudRate = 9600;
 
