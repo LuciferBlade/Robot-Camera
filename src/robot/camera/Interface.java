@@ -5,26 +5,20 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import org.opencv.core.Core;
-import org.opencv.core.Mat;
-import org.opencv.core.MatOfByte;
-import org.opencv.core.Size;
-import org.opencv.highgui.HighGui;
-import org.opencv.imgproc.Imgproc;
-import org.opencv.videoio.VideoCapture;
 
 /**
  *
  * @author blade
  */
-public class Interface extends javax.swing.JFrame {
+public class Interface extends javax.swing.JFrame{
 
     private int valueHor = 90;
     private int valueVer = 90;
@@ -35,7 +29,13 @@ public class Interface extends javax.swing.JFrame {
 
     String webcamPort = "/dev/video1";
     
-    private VideoCapture webcam;
+    JLabel imgLabel = new JLabel();
+    BufferedImage image = null;
+    
+    WebcamFeed webcam;
+    Thread thread;
+    
+    int hsv[] = new int[6];
     
     /**
      * Creates new form Interface
@@ -43,6 +43,7 @@ public class Interface extends javax.swing.JFrame {
      */
     public Interface() throws InterruptedException {
         initComponents();
+        
         centerButton.setEnabled(false);
         
         upValueField.setText(String.valueOf(valueVer - 90));
@@ -142,32 +143,33 @@ public class Interface extends javax.swing.JFrame {
             
         });
         
-        MatOfByte frame = new MatOfByte();
-        webcam = new VideoCapture();
-        webcam.open(webcamPort);
-        Thread.sleep(500);
-        if (webcam.isOpened()){
-            Runnable capture = new Runnable(){
-                @Override
-                public void run() {
-                    webcam.read(frame);
-                    Imgproc.resize(frame, frame, new Size(640, 480));
-                    BufferedImage buffImg = (BufferedImage) HighGui.toBufferedImage(frame);
-                                        
-                    camPanel.add(new JLabel(new ImageIcon(buffImg)));
-                    camPanel.repaint();
+        webcam = new WebcamFeed(webcamPort, this);
+        webcam.open();
+        thread = new Thread(webcam);
+        thread.start();
+        this.addPropertyChangeListener(new PropertyChangeListener(){
+            @Override
+            public void propertyChange(PropertyChangeEvent arg0) {
+                if (arg0.getPropertyName().equals("image")){
+                    changeImage(image);
                 }
-            
-            };
-            capture.run();
-        }
-        
-                
+            }
+        });
         
         arduCom = new ArduinoCommunication(arduinoPort, baudRate);
         arduCom.setTextArea(messageReceiver);
         arduCom.setCheck();
         arduCom.startConnection();
+    }
+    
+    public JPanel getCamPanel(){
+        return camPanel;
+    }
+    
+    public void changeImage(BufferedImage image){
+        imgLabel.setIcon(new ImageIcon(image));
+        camPanel.add(imgLabel);
+        camPanel.repaint();
     }
 
     private void setValueHor(int valueHor) {
@@ -306,9 +308,17 @@ public class Interface extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         messageReceiver = new javax.swing.JTextArea();
         msgEntryPanel = new javax.swing.JPanel();
-        message = new javax.swing.JTextField();
-        buttonSend = new javax.swing.JButton();
         camPanel = new javax.swing.JPanel();
+        buttonSend = new javax.swing.JButton();
+        message = new javax.swing.JTextField();
+        colorRecButton = new javax.swing.JButton();
+        minHField = new javax.swing.JTextField();
+        minSField = new javax.swing.JTextField();
+        minVField = new javax.swing.JTextField();
+        maxHField = new javax.swing.JTextField();
+        maxSField = new javax.swing.JTextField();
+        maxVField = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -461,22 +471,40 @@ public class Interface extends javax.swing.JFrame {
 
         msgEntryPanel.setLayout(new java.awt.GridBagLayout());
 
-        message.setPreferredSize(new java.awt.Dimension(200, 27));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        msgEntryPanel.add(message, gridBagConstraints);
-
         buttonSend.setText("Send message");
         buttonSend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSendActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        msgEntryPanel.add(buttonSend, gridBagConstraints);
+
+        message.setPreferredSize(new java.awt.Dimension(200, 27));
+
+        colorRecButton.setText("colorRec");
+        colorRecButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                colorRecButtonActionPerformed(evt);
+            }
+        });
+
+        minHField.setText("0");
+
+        minSField.setText("0");
+
+        minVField.setText("0");
+
+        maxHField.setText("80");
+
+        maxSField.setText("255");
+
+        maxVField.setText("255");
+
+        jButton1.setText("changeHSV");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -484,13 +512,37 @@ public class Interface extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(camPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addComponent(camPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(msgEntryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(message, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(colorRecButton))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(msgEntryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(buttonSend)
+                            .addComponent(jScrollPane1)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(maxHField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(maxSField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(maxVField))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(minHField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(minSField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(minVField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -499,14 +551,31 @@ public class Interface extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 214, Short.MAX_VALUE)
-                        .addComponent(msgEntryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(camPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addComponent(camPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(message, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(msgEntryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonSend)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(colorRecButton)
+                            .addComponent(minHField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(minSField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(minVField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(maxHField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(maxSField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(maxVField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(81, 81, 81))))
         );
 
         pack();
@@ -565,16 +634,40 @@ public class Interface extends javax.swing.JFrame {
         valueVer = 90;
         valueHor = 90;
         arduCom.serialWrite("90&90&");
+        upValueField.setText(String.valueOf(0));
+        downValueField.setText(String.valueOf(0));
+        leftValueField.setText(String.valueOf(0));
+        rightValueField.setText(String.valueOf(0));
         //System.out.println(valueHor + " " + valueVer);
     }//GEN-LAST:event_centerButtonActionPerformed
 
     private void buttonSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSendActionPerformed
         arduCom.serialWrite(message.getText());
+        message.setText("");
     }//GEN-LAST:event_buttonSendActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         webcam.release();
     }//GEN-LAST:event_formWindowClosing
+
+    private void colorRecButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colorRecButtonActionPerformed
+        hsv[0] = Integer.parseInt(minHField.getText());
+        hsv[1] = Integer.parseInt(minSField.getText());
+        hsv[2] = Integer.parseInt(minVField.getText());
+        hsv[3] = Integer.parseInt(maxHField.getText());
+        hsv[4] = Integer.parseInt(maxSField.getText());
+        hsv[5] = Integer.parseInt(maxVField.getText());
+        webcam.setColorRecognition();
+    }//GEN-LAST:event_colorRecButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        hsv[0] = Integer.parseInt(minHField.getText());
+        hsv[1] = Integer.parseInt(minSField.getText());
+        hsv[2] = Integer.parseInt(minVField.getText());
+        hsv[3] = Integer.parseInt(maxHField.getText());
+        hsv[4] = Integer.parseInt(maxSField.getText());
+        hsv[5] = Integer.parseInt(maxVField.getText());
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -622,16 +715,24 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JButton buttonSend;
     private javax.swing.JPanel camPanel;
     private javax.swing.JButton centerButton;
+    private javax.swing.JButton colorRecButton;
     private javax.swing.JButton downButton;
     private javax.swing.JButton downDoubleButton;
     private javax.swing.JTextField downValueField;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton leftButton;
     private javax.swing.JButton leftDoubleButton;
     private javax.swing.JTextField leftValueField;
+    private javax.swing.JTextField maxHField;
+    private javax.swing.JTextField maxSField;
+    private javax.swing.JTextField maxVField;
     private javax.swing.JTextField message;
     private javax.swing.JTextArea messageReceiver;
+    private javax.swing.JTextField minHField;
+    private javax.swing.JTextField minSField;
+    private javax.swing.JTextField minVField;
     private javax.swing.JPanel msgEntryPanel;
     private javax.swing.JButton rightButton;
     private javax.swing.JButton rightDoubleButton;
@@ -640,4 +741,5 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JButton upDoubleButton;
     private javax.swing.JTextField upValueField;
     // End of variables declaration//GEN-END:variables
+
 }
