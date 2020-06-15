@@ -10,14 +10,20 @@ contains all the necessary files, ready to upload to arduino uno/mega to initiat
 folder contains all the project classes for the java program, that is run to get video feed, recognize objects or control servos
 #### Following files are in src/robot/camera
 - ArduinoCommunication.java
+
 class made to communicate with arduino and pass on messages between GUI and arduino
 - Interface.java
+
 GUI class for GUI implementation and various GUI component logic
 - RobotCamera.java
+
 Runable class for testing. Will be deleted in future
-- WebcamFeed
+- WebcamFeed.java
+
 class which gathers webcam feed as images and sets required panel with webcam images, as if it was video stream. Also contains method to recognize colors (method might be removed or moved in the future)
 - ArduinoInterpreter.java
+
   WORK IN PROGRESS!!!
 - ObjectRecognition.java
+
   WORK IN PROGRESS!!!
