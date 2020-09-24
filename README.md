@@ -1,6 +1,6 @@
 # Robot Camera
 
-A project to create object recognition using webcam and code to control a robot head with servo motors using Arduino.
+Main project idea is to create object recognition system which gets images from webcam and then translates it into understandable by user data (pictures, object location, etc). To have a higher control over webcam application also has access to Arduino Mega controller which using servo motors allows to control the rotation of simplified robot which holds webcam.
 
 ## File/folder description
 
@@ -19,11 +19,3 @@ GUI class for GUI implementation and various GUI component logic
 
 Runable class for testing. Will be deleted in future
 - WebcamFeed.java
-
-class which gathers webcam feed as images and sets required panel with webcam images, as if it was video stream. Also contains method to recognize colors (method might be removed or moved in the future)
-- ArduinoInterpreter.java
-
-  WORK IN PROGRESS!!!
-- ObjectRecognition.java
-
-  WORK IN PROGRESS!!!
