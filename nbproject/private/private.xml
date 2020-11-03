@@ -2,6 +2,11 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/home/blade/NetBeansProjects/Robot%20Camera/src/robot/camera/RobotCamera.java</file>
+            <file>file:/home/blade/NetBeansProjects/Robot%20Camera/src/robot/camera/ArduinoCommunication.java</file>
+            <file>file:/home/blade/NetBeansProjects/Robot%20Camera/src/robot/camera/Interface.java</file>
+            <file>file:/home/blade/NetBeansProjects/Robot%20Camera/src/robot/camera/WebcamFeed.java</file>
+        </group>
     </open-files>
 </project-private>

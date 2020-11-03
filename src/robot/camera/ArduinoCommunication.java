@@ -9,10 +9,10 @@
 package robot.camera;
 
 import com.fazecast.jSerialComm.*;
+import java.awt.Color;
 import java.io.PrintWriter;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
 /**
@@ -29,6 +29,7 @@ public class ArduinoCommunication {
 
     private boolean check = false;
     private JTextArea textArea;
+    private JLabel warnArea;
 
     private boolean initiated = false;
 
@@ -75,8 +76,20 @@ public class ArduinoCommunication {
                     receivedMsg = input.nextLine();
                     if (check == false) {
                         System.out.print(receivedMsg);
+                        if (warnArea != null) {
+                            warnArea.setForeground(Color.red);
+                            warnArea.setText(receivedMsg);
+                        }
                     } else {
-                        textArea.append(receivedMsg+"\n");
+                        textArea.append(receivedMsg + "\n");
+                        if (warnArea != null) {
+                            if (receivedMsg.startsWith("Number not right!")) {
+                                warnArea.setForeground(Color.red);
+                            } else {
+                                warnArea.setForeground(Color.green);
+                            }
+                            warnArea.setText(receivedMsg);
+                        }
                     }
                 }
             }
@@ -88,7 +101,7 @@ public class ArduinoCommunication {
         return true;
     }
 
-    private boolean stopConnection() {
+    public boolean stopConnection() {
         input.close();
         output.close();
         sPort.removeDataListener();
@@ -111,6 +124,10 @@ public class ArduinoCommunication {
 
     public void setTextArea(JTextArea area) {
         textArea = area;
+    }
+
+    public void setWarnLabel(JLabel label) {
+        warnArea = label;
     }
 
     //set new baud rate

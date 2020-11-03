@@ -43,6 +43,9 @@ public class WebcamFeed implements Runnable {
     }
 
     public void open() {
+        if (this.isOpen()){
+            this.release();
+        }
         webcam.open(webcamPort);
         active = true;
     }
@@ -52,6 +55,7 @@ public class WebcamFeed implements Runnable {
     }
 
     public void release() {
+        active = false;
         webcam.release();
     }
 
