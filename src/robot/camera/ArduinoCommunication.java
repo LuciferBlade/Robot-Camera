@@ -82,13 +82,14 @@ public class ArduinoCommunication {
                         }
                     } else {
                         textArea.append(receivedMsg + "\n");
+                        textArea.setCaretPosition(textArea.getText().length());
                         if (warnArea != null) {
-                            if (receivedMsg.startsWith("Number not right!")) {
+                            if (receivedMsg.startsWith("Number not right!") || receivedMsg.startsWith("ERROR!")) {
                                 warnArea.setForeground(Color.red);
                             } else {
-                                warnArea.setForeground(Color.green);
+                                warnArea.setForeground(Color.BLUE);
                             }
-                            warnArea.setText(receivedMsg);
+                            warnArea.setText("Message from controller: " + receivedMsg);
                         }
                     }
                 }
@@ -102,9 +103,10 @@ public class ArduinoCommunication {
     }
 
     public boolean stopConnection() {
-        input.close();
-        output.close();
         sPort.removeDataListener();
+        output.close();
+        input.close();
+        sPort.closePort();
         initiated = false;
         return true;
     }

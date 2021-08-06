@@ -27,7 +27,6 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
               <Component id="WindowTabPane" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -35,11 +34,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="WindowTabPane" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
+          <Component id="WindowTabPane" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -49,6 +44,11 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="mainWindowPanel">
+          <Properties>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[1000, 500]"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Main">
@@ -73,11 +73,11 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="functionalityTabPane" min="-2" max="-2" attributes="0"/>
-                          <Component id="camPanel" min="-2" pref="480" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="camPanel" max="32767" attributes="0"/>
+                          <Component id="functionalityTabPane" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="8" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1144,99 +1144,79 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jSeparator2" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="maxHField" min="-2" pref="40" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="maxSField" min="-2" pref="40" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="maxVField" min="-2" pref="40" max="-2" attributes="0"/>
-                                          </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="minHField" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
-                                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="minSField" min="-2" pref="40" max="-2" attributes="0"/>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="minVField" min="-2" pref="40" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                                  <Group type="102" attributes="0">
                                                       <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="colorRecButton" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="minHField" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                                                          <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Group type="102" alignment="0" attributes="0">
+                                                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                                          </Group>
+                                                          <Group type="102" alignment="0" attributes="0">
+                                                              <Component id="minSField" min="-2" pref="40" max="-2" attributes="0"/>
+                                                              <EmptySpace max="-2" attributes="0"/>
+                                                              <Component id="minVField" min="-2" pref="40" max="-2" attributes="0"/>
+                                                          </Group>
+                                                      </Group>
+                                                  </Group>
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="maxHField" min="-2" pref="40" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="maxSField" min="-2" pref="40" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="maxVField" min="-2" pref="40" max="-2" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="hsvRangeButton" max="32767" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="colorRecButton" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="shapeRecButton" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="shapeRecLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="erodeField" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
+                                                          <Component id="erodeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="dilateLabel" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="dilateField" min="-2" pref="105" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                               </Group>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
+                                      <EmptySpace pref="52" max="32767" attributes="0"/>
                                   </Group>
-                                  <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="minRGB_RField" min="-2" pref="40" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="minRGB_GField" min="-2" pref="40" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="minRGB_BField" min="-2" pref="40" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="minRGB_HField" min="-2" pref="40" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                                              <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                                          <Component id="minRGB_SField" min="-2" pref="40" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                      <Component id="maxRGB_RField" min="-2" pref="40" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="maxRGB_GField" min="-2" pref="40" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="maxRGB_BField" min="-2" pref="40" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="maxRGB_HField" min="-2" pref="40" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="maxRGB_SField" min="-2" pref="40" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="colorRecButton1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButton3" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="53" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1244,6 +1224,11 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="colorRecButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="shapeRecButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -1257,7 +1242,6 @@
                                   <Component id="minSField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="minVField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -1265,43 +1249,23 @@
                                   <Component id="maxSField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="maxVField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="colorRecButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="hsvRangeButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="shapeRecLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="minRGB_RField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="minRGB_GField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="minRGB_BField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="minRGB_HField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="minRGB_SField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="erodeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="dilateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="maxRGB_RField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="maxRGB_GField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="maxRGB_BField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="maxRGB_HField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="maxRGB_SField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="dilateField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="erodeField" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="colorRecButton1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="124" max="32767" attributes="0"/>
+                              <EmptySpace pref="201" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1347,12 +1311,12 @@
                         <Property name="text" type="java.lang.String" value="0"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton1">
+                    <Component class="javax.swing.JButton" name="hsvRangeButton">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="changeHSV"/>
+                        <Property name="text" type="java.lang.String" value="Change HSV"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hsvRangeButtonActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel3">
@@ -1377,131 +1341,51 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="colorRecButton">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="colorRec"/>
+                        <Property name="text" type="java.lang.String" value="Color recognition"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="colorRecButtonActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel13">
+                    <Component class="javax.swing.JButton" name="shapeRecButton">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="RGB color recognition WIP"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel14">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Red"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel15">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="max"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel16">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="min"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel17">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Green"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel18">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Blue"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel19">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Hue"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel20">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Satu."/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="minRGB_RField">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="0"/>
-                        <Property name="enabled" type="boolean" value="false"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="minRGB_GField">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="0"/>
-                        <Property name="enabled" type="boolean" value="false"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="minRGB_BField">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="0"/>
-                        <Property name="enabled" type="boolean" value="false"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="minRGB_HField">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="0"/>
-                        <Property name="enabled" type="boolean" value="false"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="minRGB_SField">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="0"/>
-                        <Property name="enabled" type="boolean" value="false"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="maxRGB_RField">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="0"/>
-                        <Property name="enabled" type="boolean" value="false"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="maxRGB_GField">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="0"/>
-                        <Property name="enabled" type="boolean" value="false"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="maxRGB_BField">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="0"/>
-                        <Property name="enabled" type="boolean" value="false"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="maxRGB_HField">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="0"/>
-                        <Property name="enabled" type="boolean" value="false"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="maxRGB_SField">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="0"/>
-                        <Property name="enabled" type="boolean" value="false"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="colorRecButton1">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="colorRec"/>
-                        <Property name="enabled" type="boolean" value="false"/>
+                        <Property name="text" type="java.lang.String" value="Shape recognition"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="colorRecButton1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="shapeRecButtonActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel10">
+                    <Component class="javax.swing.JLabel" name="shapeRecLabel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Shape recognition WIP super buggy"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="jButton3">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Enable"/>
+                        <Property name="text" type="java.lang.String" value="Shape recognition"/>
                         <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="dilateField">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="4"/>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="erodeField">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="10"/>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="erodeLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Erode"/>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="dilateLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Dilate"/>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JSeparator" name="jSeparator2">
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1520,14 +1404,18 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Component id="message" min="-2" pref="342" max="-2" attributes="0"/>
+                                  </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="message" alignment="0" min="-2" pref="342" max="-2" attributes="0"/>
+                                          <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                           <Component id="buttonSend" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -1537,12 +1425,14 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="message" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="buttonSend" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" min="-2" pref="111" max="-2" attributes="0"/>
-                              <EmptySpace pref="268" max="32767" attributes="0"/>
+                              <Component id="jScrollPane1" min="-2" pref="250" max="-2" attributes="0"/>
+                              <EmptySpace pref="108" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1576,6 +1466,11 @@
                         </Component>
                       </SubComponents>
                     </Container>
+                    <Component class="javax.swing.JLabel" name="jLabel11">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Messaging menu"/>
+                      </Properties>
+                    </Component>
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="optionPanel">
@@ -1594,24 +1489,14 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="sizeBox" alignment="0" max="32767" attributes="0"/>
-                                          <Group type="102" attributes="0">
-                                              <Component id="invHorCheckBox" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="invVerCheckBox" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="setSizeButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="23" max="32767" attributes="0"/>
+                                      <Component id="invHorCheckBox" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                      <Component id="invVerCheckBox" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="90" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -1621,64 +1506,38 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="sizeBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="setSizeButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                               <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="invHorCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="invVerCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="invHorCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="339" max="32767" attributes="0"/>
+                              <EmptySpace pref="406" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLabel9">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="video size"/>
-                      </Properties>
-                    </Component>
                     <Component class="javax.swing.JLabel" name="jLabel12">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Arduino control inversion"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JCheckBox" name="invHorCheckBox">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Invert horizontaly"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="invVerCheckBox">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Invert verticaly"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="invVerCheckBoxActionPerformed"/>
+                      </Events>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="sizeBox">
+                    <Component class="javax.swing.JCheckBox" name="invHorCheckBox">
                       <Properties>
-                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="Item 1"/>
-                            <StringItem index="1" value="Item 2"/>
-                            <StringItem index="2" value="Item 3"/>
-                            <StringItem index="3" value="Item 4"/>
-                          </StringArray>
-                        </Property>
+                        <Property name="text" type="java.lang.String" value="Invert horizontaly"/>
                       </Properties>
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                      </AuxValues>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="setSizeButton">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Set"/>
-                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="invHorCheckBoxActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1700,15 +1559,28 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="cameraSourceBox" alignment="0" pref="300" max="32767" attributes="0"/>
-                          <Component id="arduinoSourceBox" alignment="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="906" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="sizeBox" max="32767" attributes="0"/>
+                                  <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="confirmGlobal" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cameraSourceBox" alignment="0" pref="300" max="32767" attributes="0"/>
+                                  <Component id="arduinoSourceBox" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                              <Component id="reloadButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="714" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
+                  <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -1718,12 +1590,21 @@
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="cameraSourceBox" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                          <Component id="reloadButton" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="arduinoSourceBox" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="347" max="32767" attributes="0"/>
-                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="sizeBox" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="277" max="32767" attributes="0"/>
+                      <Component id="confirmGlobal" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1732,17 +1613,20 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Camera"/>
+                <Property name="text" type="java.lang.String" value="Camera selection"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton2">
+            <Component class="javax.swing.JButton" name="confirmGlobal">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Confirm"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirmGlobalActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Arduino"/>
+                <Property name="text" type="java.lang.String" value="Arduino selection"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="cameraSourceBox">
@@ -1775,6 +1659,36 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
+            <Component class="javax.swing.JLabel" name="jLabel9">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Camera panel size"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="sizeBox">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JButton" name="reloadButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reload devices"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="reloadButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JSeparator" name="jSeparator1">
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="helpPanel">
@@ -1789,41 +1703,175 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" pref="1008" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jTabbedPane1" alignment="0" pref="1018" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" pref="486" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="jTabbedPane1" alignment="0" pref="494" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane2">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
+            <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
 
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="jTextArea1">
-                  <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="columns" type="int" value="20"/>
-                    <Property name="lineWrap" type="boolean" value="true"/>
-                    <Property name="rows" type="int" value="5"/>
-                    <Property name="text" type="java.lang.String" value="This is WIP help screen&#xa;&#xa;Rotation controls menu&#xa;&#xa;In control menu by pressing directional &quot;&gt;&quot; and &quot;&gt;&gt;&quot; buttons it is possible to rotate camera by 1 or 10 degrees. It is also possible to rotate by custom amount of degrees by entering wanted value from -90 to 90 and pressing enter. If value is above or bellow this range, it will be changed back to previous value upon user losing focus of the field.&#xa;&#xa;Arduino messaging menu&#xa;&#xa;In this menu we can send messages to the Arduino controller by typing them in the field and pressing &quot;send&quot; button. If message isn&apos;t defined in Arduino controller it will be sent back as an error.&#xa;Currently supported messages: Hello Arduino! ; \u005cd&amp;\u005cd&amp; (\u005cd defines number from 0 to 180)" containsInvalidXMLChars="true"/>
-                    <Property name="wrapStyleWord" type="boolean" value="true"/>
-                    <Property name="focusable" type="boolean" value="false"/>
-                  </Properties>
-                </Component>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                      <JTabbedPaneConstraints tabName="Control">
+                        <Property name="tabTitle" type="java.lang.String" value="Control"/>
+                      </JTabbedPaneConstraints>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextArea" name="jTextArea1">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                        <Property name="columns" type="int" value="20"/>
+                        <Property name="lineWrap" type="boolean" value="true"/>
+                        <Property name="rows" type="int" value="5"/>
+                        <Property name="text" type="java.lang.String" value="&#x9;Rotation control&#xa;&#xa;Control tab of application contains few text fields and directional buttons which allow you to rotate camera using Arduino controller and robot mechanism. If Arduino controller is connected and user presses any of buttons, application creates a message that is sent to Arduino controller with a command which contrains your selected possition. &#xa;&#xa;In that regard most similar style buttons and fields have similar use in robot control process by rotating robot mechanism 1, 10 or user-selected amount of degrees, while rotation range is limited to [0..180] horizontally and vertically. Each of the button groups are explained bellow with the actions they are assigned for:&#xa;&#xa;&#x9;One arrow button group ([ &#x2190; ] [ &#x2191; ] [ &#x2192; ] [ &#x2193; ])&#xa;&#xa;These buttons are assigned to rotate camera mechanism by 1 degree. In message for controller creation process that substracts or adds 1 degree for appropriate direction.&#xa;ex. from center possition pressing [ &#x2191; ] button will sent message to controller to set mechanism 90 degrees horizontally and 91 degress vertically.&#xa;&#xa;&#x9;Two arrow button group ([ &#x2190; &#x2190; ] [ &#x2191; &#x2191; ] [ &#x2192; &#x2192; ] [ &#x2193; &#x2193; ])&#xa;&#xa;These buttons are assigned to rotate camera mechanism by 10 degrees. In message for controller creation process that substracts or adds 10 degrees for appropriate direction.&#xa;ex. from center possition pressing [ &#x2191; &#x2191; ] button will sent message to controller to set mechanism 90 degrees horizontally and 100 degress vertically.&#xa;&#xa;&#x9;Center button ( [ + ] )&#xa;&#xa;This button is assigned to rotate camera mechanism back to the center possition. In message for controller creation process that sets wanted position as a default center possition (90 horizontally and 90 vertically).&#xa;ex. from any possition pressing [ + ] button will sent message to controller to set mechanism 90 degrees horizontally and 90 degress vertically.&#xa;&#xa;&#x9;Directional text fields&#xa;&#xa;Each direction has it&apos;s own text field which is made to allow user to rotate camera mechanism a desired amount in a range of [-90..90] to each direction. This range is different than sent to Arduino controller ( [0..180] ) to show that camera is rotated from center position. To rotate the mechanism user has to highlight wanted text field and entering a desired position and then confirm it by pressing &apos;Enter&apos; key. If after entering desired possition user presses anywhere else on the screen, the field will be return to previous value and message won&apos;t be sent.&#xa;ex. from center possition if user will enter 10 in top field and press &apos;Enter&apos; key, that will send message to controller to set mechanism 90 degrees horizontally and 100 degress vertically.&#xa;&#xa;&#x9;!!!Warning!!!&#xa;&#xa;If Arduino controller won&apos;t be connected when control buttons are pressed or control text field is confirmed, the application will attempt to send a message however it will be saves in buffer waiting for serial port recipient and that won&apos;t rotate the mechanism. In chance that Arduino controller would be accessible after pressing control buttons this message will be sent imediatly once serial port will be opened by a controller.&#xa;It is also suggested not to spam these buttons or rotation command messages. Because of limitations of serial port messages may be combined into a single message if done so and controller will report them as an error."/>
+                        <Property name="wrapStyleWord" type="boolean" value="true"/>
+                        <Property name="focusable" type="boolean" value="false"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane8">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                      <JTabbedPaneConstraints tabName="Recognition">
+                        <Property name="tabTitle" type="java.lang.String" value="Recognition"/>
+                      </JTabbedPaneConstraints>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextArea" name="jTextArea7">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                        <Property name="columns" type="int" value="20"/>
+                        <Property name="lineWrap" type="boolean" value="true"/>
+                        <Property name="rows" type="int" value="5"/>
+                        <Property name="text" type="java.lang.String" value="&#x9;Visual recognition systems&#xa;&#xa;Application allows few object parameter recognition functions: color recognition and shape recognition.&#xa;&#xa;&#x9;Color Recognition&#xa;&#xa;This function allows user to detect specific colors in camera view. This is done by pressing [ Color recognition ] button which sets camera view into black and white mode. In this view by using white color are highlighted all colors that are within specified range. To change this range there are 6 text fields for each of minimum and maximum range values in HSV color system. After entering new range user should press [ change HSV ] button or press [ Color recognition ] button twise to turn off and turn back on this mode. The table with color ranges are shown in next tab [ Color range ]. If user wishes to exit this mode it can be done by pressing [ Color recognition ] button again.&#xa;&#xa;&#x9;Shape recognition&#xa;&#xa;This function allows user to detect specific objects that are based around specific color. This is done by pressing [ Spahe recognition ] button which highlights with border the selected border of an object. In this user can change HSV color values to try finding different objects. Similarly to color recognition to change color range there are 6 text fields for each of minimum and maximum range values in HSV color system. After entering new range user should press [ change HSV ] button.&#xa;Also for precision reasons the system allows user to enter erosion and dilation values. These values are used to remove environment noise, avoid or includ smaller details of the object and isolate specific elements of an object. Dilation allows us to expand the image which adds a number of pixels to the boundaries of an object which allow us to find objects that may contain lines, hollows and other object features which may have split object by color. Erosion similar and also oposite to dilation allows us to increase the color effect of the object on surrounding pixels while minimising the effect environment colors do to the wanted object. These values are quite sensitive and depending on application use might require playing around with them for you prefference or more precise object recognition. It is recomended to use erosion values higher while keeping dilation values low for better object recognition."/>
+                        <Property name="wrapStyleWord" type="boolean" value="true"/>
+                        <Property name="focusable" type="boolean" value="false"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                      <JTabbedPaneConstraints tabName="Color range">
+                        <Property name="tabTitle" type="java.lang.String" value="Color range"/>
+                      </JTabbedPaneConstraints>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="jLabel10">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/Images/color range.png"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane9">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                      <JTabbedPaneConstraints tabName="Arduino">
+                        <Property name="tabTitle" type="java.lang.String" value="Arduino"/>
+                      </JTabbedPaneConstraints>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextArea" name="jTextArea8">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                        <Property name="columns" type="int" value="20"/>
+                        <Property name="lineWrap" type="boolean" value="true"/>
+                        <Property name="rows" type="int" value="5"/>
+                        <Property name="text" type="java.lang.String" value="&#x9;Arduino messaging menu&#xa;&#xa;This menu allows user to write direct commands or messages to Arduino controller. Such commands allow to use functionality which is present in Arduino controller but doesn&apos;t have specified commands within this application&apos;s user interface.&#xa;&#xa;To write messages user has to enter them into the text field and press [ Send message ] button bellow. The response from the controller will be displayed in a text box bellow.&#xa;&#xa;Currently available commands&#xa;&quot;0..180&quot;&amp;&quot;0..180&quot;&amp; - rotation command that allows to rotate robot mechanism by user selected amount. In order to use this command &quot;0..180&quot; in this example must be replaced with value from 0 to 180 that represent horizontal and vertical position of the camera.&#xa;Hello Arduino! - a command mostly used for testing that returns &quot;Hello I&apos;m Arduino!&quot; from the controller if controller open in serial port.&#xa;&#xa;&#x9;!!!Warning!!!&#xa;&#xa;If Arduino controller won&apos;t be connected when control buttons are pressed or control text field is confirmed, the application will attempt to send a message however it will be saves in buffer waiting for serial port recipient and that won&apos;t rotate the mechanism. In chance that Arduino controller would be accessible after pressing control buttons this message will be sent imediatly once serial port will be opened by a controller.&#xa;It is also suggested not to spam these buttons or rotation command messages. Because of limitations of serial port messages may be combined into a single message if done so and controller will report them as an error."/>
+                        <Property name="wrapStyleWord" type="boolean" value="true"/>
+                        <Property name="focusable" type="boolean" value="false"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane10">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                      <JTabbedPaneConstraints tabName="Options">
+                        <Property name="tabTitle" type="java.lang.String" value="Options"/>
+                      </JTabbedPaneConstraints>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextArea" name="jTextArea9">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                        <Property name="columns" type="int" value="20"/>
+                        <Property name="lineWrap" type="boolean" value="true"/>
+                        <Property name="rows" type="int" value="5"/>
+                        <Property name="text" type="java.lang.String" value="&#x9;Function options&#xa;&#xa;These options allow to change minor details of application that do not affect application much or require application to be restarted to use them. Bellow are explained each of available options:&#xa;&#xa;&#x9;Controll inversion&#xa;&#xa;These options allow to invert horizontal and vertical robot mechanism controlls in user interface. These options are for user convenience and if user would choose to send direct command using arduino communication menu, the command values wont be inverted."/>
+                        <Property name="wrapStyleWord" type="boolean" value="true"/>
+                        <Property name="focusable" type="boolean" value="false"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane11">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                      <JTabbedPaneConstraints tabName="Global options">
+                        <Property name="tabTitle" type="java.lang.String" value="Global options"/>
+                      </JTabbedPaneConstraints>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextArea" name="jTextArea10">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                        <Property name="columns" type="int" value="20"/>
+                        <Property name="lineWrap" type="boolean" value="true"/>
+                        <Property name="rows" type="int" value="5"/>
+                        <Property name="text" type="java.lang.String" value="&#x9;Global options&#xa;&#xa;These options allow user to set up specific options which affect most or whole application. Also these changes require restarting some of this application&apos;s functionality so they might take some time to finish their process. Bellow are explained each of available global options:&#xa;&#xa;&#x9;Camera selection&#xa;&#xa;This option allows user to select which camera is used as main robot camera and shown in camera view panel in main window. The list is generated automatically using OpenCV library, functions for device accessibility and because of that if camera doesn&apos;t show up in the list it might be required to restart this application, camera might be lacking required drivers or this application isn&apos;t allowed to access wanted device.&#xa;&#xa;&#x9;Arduino selection&#xa;&#xa;This option allows user to select which Arduino controller is used for robot mechanism and communication between this aplication and the controller. The list is generated automatically using Fazecast jSerialComm library, functions for device accessibility and because of that if controller doesn&apos;t show up in the list, it might be required to restart this application, camera might be lacking required drivers or this application isn&apos;t allowed to access wanted device&#xa;&#xa;&#x9;User interface camera panel size&#xa;&#xa;This is mostly user convenience option which allows user to change camera view panel as well as whole application windows size. This does not affect application buttons, text size or other user interface options and mostly just helps to better see robot camera view."/>
+                        <Property name="wrapStyleWord" type="boolean" value="true"/>
+                        <Property name="focusable" type="boolean" value="false"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
               </SubComponents>
             </Container>
           </SubComponents>
